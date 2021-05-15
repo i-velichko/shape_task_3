@@ -1,3 +1,3 @@
 "# shape_task_3" 
-Izvrascheniya nad treygolnikomg
+Izvrascheniya nad treygolnikom
 "# shape_task_3" 
