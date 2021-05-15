@@ -11,6 +11,7 @@ class TriangleValidatorTest {
     private Point pointA;
     private Point pointB;
     private Point pointC;
+    private Point pointD;
 
     @BeforeEach
     void setUp() {
@@ -18,6 +19,7 @@ class TriangleValidatorTest {
         pointA = new Point(1.0, 0.0);
         pointB = new Point(6.0, 0.0);
         pointC = new Point(3.0, 6.0);
+        pointD = new Point(3.0, 0.0);
     }
 
     @Test
@@ -27,8 +29,7 @@ class TriangleValidatorTest {
 
     @Test
     void isNotTriangle() throws TriangleException {
-        pointC = new Point(3.0,0.0);
-        Assertions.assertFalse(triangleValidator.isTriangle(pointA, pointB, pointC));
+        Assertions.assertFalse(triangleValidator.isTriangle(pointA, pointB, pointD));
     }
 
     @Test
