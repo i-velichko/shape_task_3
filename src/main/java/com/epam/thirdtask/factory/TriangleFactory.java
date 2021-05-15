@@ -1,16 +1,34 @@
 package com.epam.thirdtask.factory;
 
+import com.epam.thirdtask.entity.Point;
 import com.epam.thirdtask.entity.Triangle;
+import com.epam.thirdtask.exception.TriangleException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import java.util.Arrays;
 
 public class TriangleFactory {
-    private final static int POINT_A_X = 1;
-    private final static int POINT_A_Y = 2;
-    private final static int POINT_B_X = 3;
-    private final static int POINT_B_Y = 4;
-    private final static int POINT_C_X = 5;
-    private final static int POINT_C_Y = 6;
+    private final static Logger LOGGER = LogManager.getLogger();
 
-    public static Triangle createTriangle(double[] values) {
-        return new Triangle();
+    private TriangleFactory() {
+
+    }
+
+
+    public static Triangle createTriangle(Point a, Point b, Point c) {
+        return new Triangle(a, b, c);
+    }
+
+    public static Triangle createTriangle(double[] coordinates) throws TriangleException {
+
+        if (coordinates.length == 6) {
+            Point pointA = new Point(coordinates[0], coordinates[1]);
+            Point pointB = new Point(coordinates[2], coordinates[3]);
+            Point pointC = new Point(coordinates[4], coordinates[5]);
+            LOGGER.info("Create triangle from data (" + pointA + ", " + pointB + ", " + pointC + ") successful.");
+            return createTriangle(pointA, pointB, pointC);
+        }
+        throw new TriangleException("Unable to create valid triangle from this coordinates " + Arrays.toString(coordinates));
     }
 }
