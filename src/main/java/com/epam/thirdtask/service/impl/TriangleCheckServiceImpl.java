@@ -6,11 +6,6 @@ import com.epam.thirdtask.service.TriangleCheckService;
 public class TriangleCheckServiceImpl implements TriangleCheckService {
 
     @Override
-    public boolean isTriangle(Triangle triangle) {   //todo в валидтор это
-        return false;
-    }
-
-    @Override
     public boolean isRectangularTriangle(Triangle triangle) {
         return false;
     }

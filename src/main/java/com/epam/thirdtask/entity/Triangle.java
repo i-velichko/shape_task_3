@@ -6,6 +6,13 @@ public class Triangle {
     private Point pointB;
     private Point pointC;
 
+    public Triangle(Integer triangleId, Point pointA, Point pointB, Point pointC) {
+        this.triangleId = triangleId;
+        this.pointA = pointA;
+        this.pointB = pointB;
+        this.pointC = pointC;
+    }
+
     public Integer getTriangleId() {
         return triangleId;
     }
