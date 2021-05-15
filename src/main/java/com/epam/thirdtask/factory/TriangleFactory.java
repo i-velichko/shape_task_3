@@ -11,11 +11,6 @@ import java.util.Arrays;
 public class TriangleFactory {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    private TriangleFactory() {
-
-    }
-
-
     public static Triangle createTriangle(Point a, Point b, Point c) {
         return new Triangle(a, b, c);
     }
@@ -29,6 +24,6 @@ public class TriangleFactory {
             LOGGER.info("Create triangle from data (" + pointA + ", " + pointB + ", " + pointC + ") successful.");
             return createTriangle(pointA, pointB, pointC);
         }
-        throw new TriangleException("Unable to create valid triangle from this coordinates " + Arrays.toString(coordinates));
+        throw new TriangleException("Unable to create triangle from this coordinates " + Arrays.toString(coordinates));
     }
 }

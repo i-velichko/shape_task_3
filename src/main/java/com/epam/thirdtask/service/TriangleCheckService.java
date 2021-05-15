@@ -1,10 +1,11 @@
 package com.epam.thirdtask.service;
 
 import com.epam.thirdtask.entity.Triangle;
+import com.epam.thirdtask.exception.TriangleException;
 
 public interface TriangleCheckService {
 
-    boolean isRectangularTriangle(Triangle triangle);
+    boolean isRightTriangle(Triangle triangle) throws TriangleException;
 
     boolean isIsoscelesTriangle(Triangle triangle);
 
