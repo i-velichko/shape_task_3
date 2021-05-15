@@ -11,16 +11,26 @@ class DataFileReaderTest {
     private static DataFileReader dataFileReader;
 
     @BeforeEach
-    void setUp() throws TriangleException {
+    void setUp() {
         dataFileReader = new DataFileReader();
+    }
+
+    @Test
+    void testReadDataForArraySuccess() throws TriangleException {
         int actualLinesSize = dataFileReader.readAllDataFromFile(PATH_TO_FILE).size();
-        int expectedLinesSize = 1;
+        int expectedLinesSize = 8;
         Assertions.assertEquals(expectedLinesSize, actualLinesSize);
     }
 
     @Test()
     void testReadDataWhenFileNotFound() {
         Assertions.assertThrows(TriangleException.class, () ->
-            dataFileReader.readAllDataFromFile(WRONG_PATH_TO_FILE));
+                dataFileReader.readAllDataFromFile(WRONG_PATH_TO_FILE));
+    }
+
+    @Test()
+    void testReadDataWhenPathToFileIsNull() {
+        Assertions.assertThrows(TriangleException.class, () ->
+                dataFileReader.readAllDataFromFile(null));
     }
 }
