@@ -1,21 +1,29 @@
 package com.epam.thirdtask.entity;
 
 public class Point {
-    private int x;
-    private int y;
+    private double x;
+    private double y;
 
 
-    public Point(int x, int y) {
+    public Point(double x, double y) {
         this.x = x;
         this.y = y;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
         return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
     }
 
     @Override
@@ -29,16 +37,20 @@ public class Point {
 
         Point point = (Point) o;
 
-        if (getX() != point.getX()) {
+        if (Double.compare(point.getX(), getX()) != 0) {
             return false;
         }
-        return getY() == point.getY();
+        return Double.compare(point.getY(), getY()) == 0;
     }
 
     @Override
     public int hashCode() {
-        int result = getX();
-        result = 31 * result + getY();
+        int result;
+        long temp;
+        temp = Double.doubleToLongBits(getX());
+        result = (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(getY());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
     }
 
