@@ -4,13 +4,14 @@ import com.epam.thirdtask.entity.Point;
 import com.epam.thirdtask.entity.Triangle;
 import com.epam.thirdtask.exception.TriangleException;
 import com.epam.thirdtask.service.TriangleCheckService;
+import com.epam.thirdtask.validator.TriangleValidator;
 
 public class TriangleCheckServiceImpl implements TriangleCheckService {
 
     @Override
-    public boolean isRightTriangle (Triangle triangle) throws TriangleException {
-        if (triangle == null){
-            throw new TriangleException("Triangle is null");
+    public boolean isRightTriangle(Triangle triangle) throws TriangleException {
+        if (!TriangleValidator.isTriangle(triangle)) {
+            throw new TriangleException("It isn't triangle");
         }
 
         Point a = triangle.getPointA();
@@ -25,15 +26,38 @@ public class TriangleCheckServiceImpl implements TriangleCheckService {
 
     }
 
-
     @Override
-    public boolean isIsoscelesTriangle(Triangle triangle) {
-        return false;
+    public boolean isIsoscelesTriangle(Triangle triangle) throws TriangleException {
+        if (!TriangleValidator.isTriangle(triangle)) {
+            throw new TriangleException("It isn't triangle");
+        }
+        TriangleCalculateServiceImpl triangleCalculateService = new TriangleCalculateServiceImpl();
+        boolean result = false;
+        double[] triangleSides = triangleCalculateService.triangleSidesCalculate(triangle);
+        if (triangleSides[0] == triangleSides[1] ||
+                triangleSides[1] == triangleSides[2] ||
+                triangleSides[2] == triangleSides[0]) {
+            result = true;
+        }
+        return result;
     }
 
     @Override
-    public boolean isEquilateralTriangle(Triangle triangle) {
-        return false;
+    public boolean isEquilateralTriangle(Triangle triangle) throws TriangleException {
+        if (!TriangleValidator.isTriangle(triangle)) {
+            throw new TriangleException("It isn't triangle");
+        }
+
+        TriangleCalculateServiceImpl triangleCalculateService = new TriangleCalculateServiceImpl();
+        boolean result = false;
+        double[] triangleSides = triangleCalculateService.triangleSidesCalculate(triangle);
+
+        if (triangleSides[0] == triangleSides[1] && triangleSides[1] == triangleSides[2]) {
+            result = true;
+        }
+
+        return result;
+
     }
 
     @Override

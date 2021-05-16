@@ -6,7 +6,7 @@ public class Triangle {
     private Point pointB;
     private Point pointC;
 
-    public Triangle() {
+    public Triangle(Integer triangleId, Point pointA, Point pointB, Point pointC) {
         this.triangleId = triangleId;
         this.pointA = pointA;
         this.pointB = pointB;

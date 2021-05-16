@@ -7,9 +7,9 @@ public interface TriangleCheckService {
 
     boolean isRightTriangle(Triangle triangle) throws TriangleException;
 
-    boolean isIsoscelesTriangle(Triangle triangle);
+    boolean isIsoscelesTriangle(Triangle triangle) throws TriangleException;
 
-    boolean isEquilateralTriangle(Triangle triangle);
+    boolean isEquilateralTriangle(Triangle triangle) throws TriangleException;
 
     boolean isAcuteAngledTriangle(Triangle triangle);
 

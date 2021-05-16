@@ -1,6 +1,7 @@
 package com.epam.thirdtask.validator;
 
 import com.epam.thirdtask.entity.Point;
+import com.epam.thirdtask.entity.Triangle;
 import com.epam.thirdtask.exception.TriangleException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -8,7 +9,11 @@ import org.apache.logging.log4j.Logger;
 public class TriangleValidator {
     private final static Logger LOGGER = LogManager.getLogger();
 
-    public boolean isTriangle(Point a, Point b, Point c) throws TriangleException {
+    public static boolean isTriangle(Triangle triangle) throws TriangleException {
+        Point a = triangle.getPointA();
+        Point b = triangle.getPointA();
+        Point c = triangle.getPointA();
+
         if (a == null || b == null || c == null) {
             throw new TriangleException("One or more points is null, can not create triangle");
         } else {
