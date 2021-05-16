@@ -9,6 +9,14 @@ public class TriangleParameters {
         this.area = area;
     }
 
+    public TriangleParameters() {
+    }
+
+    public TriangleParameters(TriangleParameters parameters) {
+        area = parameters.area;
+        perimeter = parameters.perimeter;
+    }
+
     public double getPerimeter() {
         return perimeter;
     }

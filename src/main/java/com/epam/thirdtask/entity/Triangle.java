@@ -1,12 +1,12 @@
 package com.epam.thirdtask.entity;
 
 public class Triangle {
-    private Integer triangleId;
+    private Long triangleId;
     private Point pointA;
     private Point pointB;
     private Point pointC;
 
-    public Triangle(Integer triangleId, Point pointA, Point pointB, Point pointC) {
+    public Triangle(Long triangleId, Point pointA, Point pointB, Point pointC) {
         this.triangleId = triangleId;
         this.pointA = pointA;
         this.pointB = pointB;
@@ -19,11 +19,14 @@ public class Triangle {
         this.pointC = pointC;
     }
 
-    public Integer getTriangleId() {
+    public Triangle() {
+    }
+
+    public Long getTriangleId() {
         return triangleId;
     }
 
-    public void setTriangleId(Integer triangleId) {
+    public void setTriangleId(Long triangleId) {
         this.triangleId = triangleId;
     }
 

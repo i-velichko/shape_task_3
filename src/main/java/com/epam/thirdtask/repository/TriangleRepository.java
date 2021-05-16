@@ -7,9 +7,9 @@ import java.util.List;
 public interface TriangleRepository {
     void add(Triangle triangle);
 
-    Triangle findById(Integer id);
+    Triangle findById(Long id);
 
-    void update(Triangle triangle, Integer id);
+    void update(Triangle triangle, Long id);
 
     boolean delete(Triangle triangle);
 

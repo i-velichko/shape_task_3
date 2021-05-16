@@ -1,9 +1,7 @@
 package com.epam.thirdtask.repository.impl;
 
 import com.epam.thirdtask.entity.Triangle;
-import com.epam.thirdtask.entity.TriangleParameters;
 import com.epam.thirdtask.repository.Specification;
-import com.epam.thirdtask.warehouse.Warehouse;
 
 public class AreaSpecification implements Specification {
     private double area;
@@ -14,11 +12,12 @@ public class AreaSpecification implements Specification {
 
     @Override
     public boolean specify(Triangle triangle) {
-        Integer triangleId = triangle.getTriangleId();
+        Long triangleId = triangle.getTriangleId();
         //Из вархауса по этому айди тяну вычисления этого треугольника
 
         //взять из обьекта площаь triangleParameters.getArea();
 
         //return triangleParameters.getArea().equals(area);
+        return true;
     }
 }

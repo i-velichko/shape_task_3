@@ -4,9 +4,9 @@ import com.epam.thirdtask.entity.Triangle;
 import com.epam.thirdtask.repository.Specification;
 
 public class IdSpecification implements Specification {
-    private Integer id;
+    private Long id;
 
-    public IdSpecification(Integer id) {
+    public IdSpecification(Long id) {
         this.id = id;
     }
 

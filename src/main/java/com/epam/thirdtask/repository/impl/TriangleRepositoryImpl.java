@@ -30,12 +30,12 @@ public class TriangleRepositoryImpl implements TriangleRepository {
     }
 
     @Override
-    public Triangle findById(Integer id) {
+    public Triangle findById(Long id) {
         return null;
     }
 
     @Override
-    public void update(Triangle triangle, Integer id) {
+    public void update(Triangle triangle, Long id) {
 
     }
 
