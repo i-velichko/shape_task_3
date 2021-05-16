@@ -1,5 +1,7 @@
 package com.epam.thirdtask.entity;
 
+import com.epam.thirdtask.util.TriangleIdGenerator;
+
 public class Triangle {
     private Long triangleId;
     private Point pointA;
@@ -7,7 +9,7 @@ public class Triangle {
     private Point pointC;
 
     public Triangle(Long triangleId, Point pointA, Point pointB, Point pointC) {
-        this.triangleId = triangleId;
+        this.triangleId = TriangleIdGenerator.generateId();
         this.pointA = pointA;
         this.pointB = pointB;
         this.pointC = pointC;
