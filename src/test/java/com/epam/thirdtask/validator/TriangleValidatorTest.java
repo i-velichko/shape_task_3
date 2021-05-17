@@ -13,6 +13,7 @@ class TriangleValidatorTest {
     private Point pointC;
     private Point pointD;
     private Triangle wrightTriangle;
+    private Triangle wrongTriangle;
 
     @BeforeEach
     void setUp() {
@@ -21,6 +22,7 @@ class TriangleValidatorTest {
         pointC = new Point(3.0, 6.0);
         pointD = new Point(3.0, 0.0);
         wrightTriangle = new Triangle(pointA, pointB, pointC);
+        wrongTriangle = new Triangle(pointA, pointB, pointD);
 
     }
 

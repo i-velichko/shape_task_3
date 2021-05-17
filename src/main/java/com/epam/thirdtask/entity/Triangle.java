@@ -1,12 +1,21 @@
 package com.epam.thirdtask.entity;
 
+import com.epam.thirdtask.exception.TriangleException;
+import com.epam.thirdtask.observer.TriangleEvent;
+import com.epam.thirdtask.observer.TriangleObservable;
+import com.epam.thirdtask.observer.TriangleObserver;
+import com.epam.thirdtask.observer.impl.TriangleObserverImpl;
 import com.epam.thirdtask.util.TriangleIdGenerator;
 
-public class Triangle {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Triangle implements TriangleObservable {
     private Long triangleId;
     private Point pointA;
     private Point pointB;
     private Point pointC;
+    private List<TriangleObserver> observers = new ArrayList<>();
 
     public Triangle(Long triangleId, Point pointA, Point pointB, Point pointC) {
         this.triangleId = TriangleIdGenerator.generateId();
@@ -57,6 +66,29 @@ public class Triangle {
     }
 
     @Override
+    public void addObserver(TriangleObserver observer) {
+        if (observer != null) {
+            observers.add(observer);
+        }
+
+    }
+
+    @Override
+    public void removeObserver(TriangleObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObserver() throws TriangleException {
+        TriangleEvent event = new TriangleEvent(this);
+        if (!observers.isEmpty()) {
+            for (TriangleObserver observer : observers) {
+                observer.parametersChanged(event);
+            }
+        }
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -93,4 +125,5 @@ public class Triangle {
         sb.append('}');
         return sb.toString();
     }
+
 }

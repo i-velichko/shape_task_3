@@ -6,13 +6,13 @@ import com.epam.thirdtask.exception.TriangleException;
 import com.epam.thirdtask.repository.Specification;
 import com.epam.thirdtask.warehouse.Warehouse;
 
-public class AreaSpecification implements Specification {
-    private double minArea;
-    private double maxArea;
+public class PerimeterSpecification implements Specification {
+private double minPerimeter;
+private double maxPerimeter;
 
-    public AreaSpecification(double minArea, double maxArea) {
-        this.minArea = minArea;
-        this.maxArea = maxArea;
+    public PerimeterSpecification(double minPerimeter, double maxPerimeter) {
+        this.minPerimeter = minPerimeter;
+        this.maxPerimeter = maxPerimeter;
     }
 
     @Override
@@ -20,7 +20,7 @@ public class AreaSpecification implements Specification {
         Warehouse warehouse = Warehouse.getInstance();
         Long triangleId = triangle.getTriangleId();
         TriangleParameters triangleParameters = warehouse.getParameters(triangleId);
-        double area = triangleParameters.getArea();
-        return (area >= minArea && area <= maxArea);
+        double perimeter = triangleParameters.getPerimeter();
+        return (perimeter >= minPerimeter && perimeter <= maxPerimeter);
     }
 }

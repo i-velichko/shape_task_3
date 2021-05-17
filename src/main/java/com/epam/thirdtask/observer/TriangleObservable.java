@@ -1,10 +1,13 @@
 package com.epam.thirdtask.observer;
 
+import com.epam.thirdtask.exception.TriangleException;
+import com.epam.thirdtask.observer.impl.TriangleObserverImpl;
+
 public interface TriangleObservable {
 
-    void attachObserver(TriangleObserver observer);
+    void addObserver(TriangleObserver observer);
 
-    void detachObserver();
+    void removeObserver(TriangleObserver observer);
 
-    void notifyObservers();
+    void notifyObserver() throws TriangleException;
 }

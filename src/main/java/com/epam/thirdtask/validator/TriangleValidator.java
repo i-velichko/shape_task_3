@@ -21,4 +21,5 @@ public class TriangleValidator {
             return (a.getX() - c.getX()) * (b.getY() - c.getY()) - (b.getX() - c.getX()) * (a.getY() - c.getY()) != 0;
         }
     }
+
 }
