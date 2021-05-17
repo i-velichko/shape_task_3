@@ -16,11 +16,19 @@ public class AreaSpecification implements Specification {
     }
 
     @Override
-    public boolean specify(Triangle triangle) throws TriangleException {
+    public boolean specify(Triangle triangle) {
         Warehouse warehouse = Warehouse.getInstance();
         Long triangleId = triangle.getTriangleId();
-        TriangleParameters triangleParameters = warehouse.getParameters(triangleId);
-        double area = triangleParameters.getArea();
+        TriangleParameters triangleParameters = null;
+        try {
+            triangleParameters = warehouse.getParameters(triangleId);
+        } catch (TriangleException e) {
+            e.printStackTrace();
+        }
+        double area = 0;
+        if (triangleParameters != null) {
+            area = triangleParameters.getArea();
+        }
         return (area >= minArea && area <= maxArea);
     }
 }

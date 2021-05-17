@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +25,15 @@ public class TriangleRepositoryImpl implements TriangleRepository {
     }
 
     @Override
-    public void add(Triangle triangle) {
-        triangleList.add(triangle);
+    public boolean add(Triangle triangle) {
         LOGGER.info("New triangle was add to repository " + triangle);
+        return triangleList.add(triangle);
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends Triangle> triangles) {
+        LOGGER.info("New triangles list was add to repository " + triangles.toString());
+        return triangleList.addAll(triangles);
     }
 
     @Override
@@ -42,15 +49,14 @@ public class TriangleRepositoryImpl implements TriangleRepository {
     @Override
     public boolean delete(Triangle triangle) {
         LOGGER.info("Triangle " + triangle + " was deleted from repository " + triangle);
-        return  triangleList.remove(triangle);
+        return triangleList.remove(triangle);
     }
 
     @Override
     public List<Triangle> query(Specification specification) {
-        List<Triangle> triangles = triangleList.stream()
+        return triangleList.stream()
                 .filter(triangle -> specification.specify(triangle))
                 .collect(Collectors.toList());
-        return  triangles;
     }
 
 }

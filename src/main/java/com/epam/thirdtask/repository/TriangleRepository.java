@@ -2,10 +2,13 @@ package com.epam.thirdtask.repository;
 
 import com.epam.thirdtask.entity.Triangle;
 
+import java.util.Collection;
 import java.util.List;
 
 public interface TriangleRepository {
-    void add(Triangle triangle);
+    boolean add(Triangle triangle);
+
+    boolean addAll(Collection<? extends Triangle> triangles);
 
     Triangle findById(Long id);
 

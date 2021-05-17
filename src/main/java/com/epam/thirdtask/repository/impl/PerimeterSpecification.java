@@ -7,8 +7,8 @@ import com.epam.thirdtask.repository.Specification;
 import com.epam.thirdtask.warehouse.Warehouse;
 
 public class PerimeterSpecification implements Specification {
-private double minPerimeter;
-private double maxPerimeter;
+    private double minPerimeter;
+    private double maxPerimeter;
 
     public PerimeterSpecification(double minPerimeter, double maxPerimeter) {
         this.minPerimeter = minPerimeter;
@@ -16,11 +16,19 @@ private double maxPerimeter;
     }
 
     @Override
-    public boolean specify(Triangle triangle) throws TriangleException {
+    public boolean specify(Triangle triangle) {
         Warehouse warehouse = Warehouse.getInstance();
         Long triangleId = triangle.getTriangleId();
-        TriangleParameters triangleParameters = warehouse.getParameters(triangleId);
-        double perimeter = triangleParameters.getPerimeter();
+        TriangleParameters triangleParameters = null;
+        try {
+            triangleParameters = warehouse.getParameters(triangleId);
+        } catch (TriangleException e) {
+            e.printStackTrace();
+        }
+        double perimeter = 0;
+        if (triangleParameters != null) {
+            perimeter = triangleParameters.getPerimeter();
+        }
         return (perimeter >= minPerimeter && perimeter <= maxPerimeter);
     }
 }
