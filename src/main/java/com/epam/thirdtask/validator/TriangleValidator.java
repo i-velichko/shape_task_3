@@ -11,8 +11,8 @@ public class TriangleValidator {
 
     public static boolean isTriangle(Triangle triangle) throws TriangleException {
         Point a = triangle.getPointA();
-        Point b = triangle.getPointA();
-        Point c = triangle.getPointA();
+        Point b = triangle.getPointB();
+        Point c = triangle.getPointC();
 
         if (a == null || b == null || c == null) {
             throw new TriangleException("One or more points is null, can not create triangle");
