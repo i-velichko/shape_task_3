@@ -50,7 +50,7 @@ public class TriangleCalculateServiceImpl implements TriangleCalculateService {
     @Override
     public double triangleSideCalculate(Point point1, Point point2) throws TriangleException {
 
-        if (point1 == null || point2 == null){
+        if (point1 == null || point2 == null) {
             throw new TriangleException("One or more points is null");
         }
         double x1;

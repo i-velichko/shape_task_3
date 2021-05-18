@@ -6,7 +6,7 @@ public class TriangleIdGenerator {
     public TriangleIdGenerator() {
     }
 
-    public static long generateId(){
+    public static long generateId() {
         return ++counter;
     }
 }

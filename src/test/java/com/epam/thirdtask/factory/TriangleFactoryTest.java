@@ -7,18 +7,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class TriangleFactoryTest {
-    private TriangleFactory triangleFactory;
+    private final static double[] UNCORRECTED_TRIANGLE_COORDINATES_ARRAY = new double[5];
     Point a;
     Point b;
     Point c;
-    private final static double[] UNCORRECTED_TRIANGLE_COORDINATES_ARRAY = new double[5];
 
     @BeforeEach
     void setUp() {
-        triangleFactory = new TriangleFactory();
         a = new Point();
         b = new Point();
         c = new Point();

@@ -7,14 +7,12 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class TriangleCalculateServiceImplTest {
-    private TriangleCalculateServiceImpl triangleCalculateService;
-    private Triangle triangle;
     private final static Point A = new Point(1.0, 0.0);
     private final static Point B = new Point(6.0, 0.0);
     private final static Point C = new Point(3.0, 6.0);
+    private TriangleCalculateServiceImpl triangleCalculateService;
+    private Triangle triangle;
 
     @BeforeEach
     void setUp() {

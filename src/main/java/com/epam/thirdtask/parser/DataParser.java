@@ -16,7 +16,7 @@ public class DataParser {
         for (int i = 0; i < charactersTriangle.length; i++) {
             try {
                 pointNumbers[i] = Double.parseDouble(charactersTriangle[i].trim());
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 LOGGER.error("This characters can not be a parse to double ." + e.getMessage());
                 throw new TriangleException();
             }

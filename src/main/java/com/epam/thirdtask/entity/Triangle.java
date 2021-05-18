@@ -4,7 +4,6 @@ import com.epam.thirdtask.exception.TriangleException;
 import com.epam.thirdtask.observer.TriangleEvent;
 import com.epam.thirdtask.observer.TriangleObservable;
 import com.epam.thirdtask.observer.TriangleObserver;
-import com.epam.thirdtask.observer.impl.TriangleObserverImpl;
 import com.epam.thirdtask.util.TriangleIdGenerator;
 
 import java.util.ArrayList;
@@ -118,12 +117,12 @@ public class Triangle implements TriangleObservable {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Triangle{");
-        sb.append("pointA=").append(pointA);
-        sb.append(", pointB=").append(pointB);
-        sb.append(", pointC=").append(pointC);
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder builder = new StringBuilder("Triangle{");
+        builder.append("pointA=").append(pointA);
+        builder.append(", pointB=").append(pointB);
+        builder.append(", pointC=").append(pointC);
+        builder.append('}');
+        return builder.toString();
     }
 
 }

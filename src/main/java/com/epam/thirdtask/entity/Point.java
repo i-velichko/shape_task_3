@@ -58,10 +58,10 @@ public class Point {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Point{");
-        sb.append("x=").append(x);
-        sb.append(", y=").append(y);
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder builder = new StringBuilder("Point{");
+        builder.append("x=").append(x);
+        builder.append(", y=").append(y);
+        builder.append('}');
+        return builder.toString();
     }
 }

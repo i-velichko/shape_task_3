@@ -63,10 +63,10 @@ public class TriangleParameters {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("TriangleParameters{");
-        sb.append("perimeter=").append(perimeter);
-        sb.append(", area=").append(area);
-        sb.append('}');
-        return sb.toString();
+        final StringBuilder builder = new StringBuilder("TriangleParameters{");
+        builder.append("perimeter=").append(perimeter);
+        builder.append(", area=").append(area);
+        builder.append('}');
+        return builder.toString();
     }
 }

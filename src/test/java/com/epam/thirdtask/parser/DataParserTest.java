@@ -30,7 +30,7 @@ class DataParserTest {
     }
 
     @Test
-    void testWhenUncorrectedCharactersInLine(){
+    void testWhenUncorrectedCharactersInLine() {
         Assertions.assertThrows(TriangleException.class, () ->
                 dataParser.parseStringToDouble(WRONG_LINE_FOR_PARSING));
     }

@@ -11,7 +11,7 @@ public class TriangleEvent extends EventObject {
     }
 
     @Override
-    public Triangle getSource(){
+    public Triangle getSource() {
         return (Triangle) super.getSource();
     }
 }
