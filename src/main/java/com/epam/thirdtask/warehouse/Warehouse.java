@@ -4,13 +4,14 @@ import com.epam.thirdtask.entity.TriangleParameters;
 import com.epam.thirdtask.exception.TriangleException;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Warehouse {
     private static Warehouse instance;
-    private HashMap<Long, TriangleParameters> storageMap = new HashMap<>();
+    private Map<Long, TriangleParameters> storageMap;
 
     private Warehouse() {
-
+        storageMap = new HashMap<>();
     }
 
     public static Warehouse getInstance() {
@@ -20,14 +21,14 @@ public class Warehouse {
         return instance;
     }
 
-    public void putParameters(long id, double area, double perimeter) {
+    public void putParameters(Long id, Double area, Double perimeter) {
         TriangleParameters parameters = new TriangleParameters();
         parameters.setArea(area);
         parameters.setPerimeter(perimeter);
         instance.storageMap.put(id, parameters);
     }
 
-    public TriangleParameters getParameters(long id) throws TriangleException {
+    public TriangleParameters getParameters(Long id) throws TriangleException {
         TriangleParameters parameters = instance.storageMap.get(id);
         if (parameters == null) {
             throw new TriangleException("This item does not exist in warehouse");
@@ -35,16 +36,7 @@ public class Warehouse {
         return new TriangleParameters(parameters);
     }
 
-    public void updateParameters(long id, double area, double perimeter) throws TriangleException {
-        TriangleParameters parameters = storageMap.get(id);
-        if (parameters == null) {
-            throw new TriangleException("This item does not exist in warehouse");
-        }
-        parameters.setArea(area);
-        parameters.setPerimeter(perimeter);
-    }
-
-    public void removeParameters(long id) throws TriangleException {
+    public void removeParameters(Long id) throws TriangleException {
         TriangleParameters parameters = storageMap.get(id);
         if (parameters == null) {
             throw new TriangleException("This item does not exist in warehouse");

@@ -10,8 +10,7 @@ public interface TriangleCalculateService {
 
     double trianglePerimeterCalculate(Triangle triangle) throws TriangleException;
 
-    double triangleSideCalculate(Point p1, Point p2) throws TriangleException;
+    double[] triangleSidesCalculate(Triangle triangle);
 
-    double[] triangleSidesCalculate(Triangle triangle) throws TriangleException;
 
 }

@@ -13,6 +13,6 @@ public class IdSpecification implements Specification {
     @Override
     public boolean specify(Triangle triangle) {
 
-        return triangle.getTriangleId().equals(id);
+        return triangle.getId().equals(id);
     }
 }

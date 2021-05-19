@@ -10,50 +10,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle implements TriangleObservable {
-    private Long triangleId;
+    private Long id;
     private Point pointA;
     private Point pointB;
     private Point pointC;
     private List<TriangleObserver> observers = new ArrayList<>();
 
-    public Triangle(Long triangleId, Point pointA, Point pointB, Point pointC) {
-        this.triangleId = TriangleIdGenerator.generateId();
-        this.pointA = pointA;
-        this.pointB = pointB;
-        this.pointC = pointC;
-    }
-
     public Triangle(Point pointA, Point pointB, Point pointC) {
+        this.id = TriangleIdGenerator.generateId();
         this.pointA = pointA;
         this.pointB = pointB;
         this.pointC = pointC;
     }
 
     public Triangle() {
+        this.id = TriangleIdGenerator.generateId();
     }
 
-    public Long getTriangleId() {
-        return triangleId;
+    public Long getId() {
+        return id;
     }
 
-    public void setTriangleId(Long triangleId) {
-        this.triangleId = triangleId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Point getPointA() {
         return pointA;
     }
 
-    public void setPointA(Point pointA) {
+    public void setPointA(Point pointA) throws TriangleException {
+        if (pointA == null) {
+            throw new TriangleException("You can not create triangle with null point(s)");
+        }
         this.pointA = pointA;
+        notifyObserver();
     }
 
     public Point getPointB() {
         return pointB;
     }
 
-    public void setPointB(Point pointB) {
+    public void setPointB(Point pointB) throws TriangleException {
+        if (pointA == null) {
+            throw new TriangleException("You can not create triangle with null point(s)");
+        }
         this.pointB = pointB;
+        notifyObserver();
     }
 
     public Point getPointC() {
@@ -98,31 +101,39 @@ public class Triangle implements TriangleObservable {
 
         Triangle triangle = (Triangle) o;
 
+        if (getId() != null ? !getId().equals(triangle.getId()) : triangle.getId() != null) {
+            return false;
+        }
         if (getPointA() != null ? !getPointA().equals(triangle.getPointA()) : triangle.getPointA() != null) {
             return false;
         }
         if (getPointB() != null ? !getPointB().equals(triangle.getPointB()) : triangle.getPointB() != null) {
             return false;
         }
-        return getPointC() != null ? getPointC().equals(triangle.getPointC()) : triangle.getPointC() == null;
+        if (getPointC() != null ? !getPointC().equals(triangle.getPointC()) : triangle.getPointC() != null) {
+            return false;
+        }
+        return observers != null ? observers.equals(triangle.observers) : triangle.observers == null;
     }
 
     @Override
     public int hashCode() {
-        int result = getPointA() != null ? getPointA().hashCode() : 0;
+        int result = getId() != null ? getId().hashCode() : 0;
+        result = 31 * result + (getPointA() != null ? getPointA().hashCode() : 0);
         result = 31 * result + (getPointB() != null ? getPointB().hashCode() : 0);
         result = 31 * result + (getPointC() != null ? getPointC().hashCode() : 0);
+        result = 31 * result + (observers != null ? observers.hashCode() : 0);
         return result;
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder("Triangle{");
-        builder.append("pointA=").append(pointA);
+        builder.append("id=").append(id);
+        builder.append(", pointA=").append(pointA);
         builder.append(", pointB=").append(pointB);
         builder.append(", pointC=").append(pointC);
         builder.append('}');
         return builder.toString();
     }
-
 }

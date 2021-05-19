@@ -2,7 +2,6 @@ package com.epam.thirdtask.service.impl;
 
 import com.epam.thirdtask.entity.Point;
 import com.epam.thirdtask.entity.Triangle;
-import com.epam.thirdtask.exception.TriangleException;
 import com.epam.thirdtask.service.TriangleCalculateService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,11 +10,7 @@ public class TriangleCalculateServiceImpl implements TriangleCalculateService {
     private final static Logger LOGGER = LogManager.getLogger();
 
     @Override
-    public double triangleAreaCalculate(Triangle triangle) throws TriangleException {
-        if (triangle == null) {
-            throw new TriangleException("Triangle is null");
-        }
-
+    public double triangleAreaCalculate(Triangle triangle) {
         double square;
         Point a = triangle.getPointA();
         Point b = triangle.getPointB();
@@ -28,11 +23,7 @@ public class TriangleCalculateServiceImpl implements TriangleCalculateService {
     }
 
     @Override
-    public double trianglePerimeterCalculate(Triangle triangle) throws TriangleException {
-        if (triangle == null) {
-            throw new TriangleException("Triangle is null");
-        }
-
+    public double trianglePerimeterCalculate(Triangle triangle) {
         double perimeter;
         Point a = triangle.getPointA();
         Point b = triangle.getPointB();
@@ -48,11 +39,16 @@ public class TriangleCalculateServiceImpl implements TriangleCalculateService {
     }
 
     @Override
-    public double triangleSideCalculate(Point point1, Point point2) throws TriangleException {
+    public double[] triangleSidesCalculate(Triangle triangle) {
+        double[] triangleSides = new double[3];
+        triangleSides[0] = triangleSideCalculate(triangle.getPointA(), triangle.getPointB());
+        triangleSides[1] = triangleSideCalculate(triangle.getPointB(), triangle.getPointC());
+        triangleSides[2] = triangleSideCalculate(triangle.getPointC(), triangle.getPointA());
 
-        if (point1 == null || point2 == null) {
-            throw new TriangleException("One or more points is null");
-        }
+        return triangleSides;
+    }
+
+    private double triangleSideCalculate(Point point1, Point point2) {
         double x1;
         double y1;
         x1 = point1.getX();
@@ -64,19 +60,6 @@ public class TriangleCalculateServiceImpl implements TriangleCalculateService {
         y2 = point2.getY();
 
         return Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
-    }
-
-    @Override
-    public double[] triangleSidesCalculate(Triangle triangle) throws TriangleException {
-        if (triangle == null) {
-            throw new TriangleException("Triangle is null");
-        }
-        double[] triangleSides = new double[3];
-        triangleSides[0] = triangleSideCalculate(triangle.getPointA(), triangle.getPointB());
-        triangleSides[1] = triangleSideCalculate(triangle.getPointB(), triangle.getPointC());
-        triangleSides[2] = triangleSideCalculate(triangle.getPointC(), triangle.getPointA());
-
-        return triangleSides;
     }
 
 }

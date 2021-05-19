@@ -21,7 +21,7 @@ public class DataValidator {
                 LOGGER.info(" Data string " + dataLine + " is valid.");
                 result = true;
             } else {
-                LOGGER.info(" Data string " + dataLine + " is not valid.");
+                LOGGER.error(" Data string " + dataLine + " is not valid.");
                 result = false;
             }
 

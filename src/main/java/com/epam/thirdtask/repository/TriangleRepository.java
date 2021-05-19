@@ -6,13 +6,14 @@ import java.util.Collection;
 import java.util.List;
 
 public interface TriangleRepository {
+
     boolean add(Triangle triangle);
 
     boolean addAll(Collection<? extends Triangle> triangles);
 
-    Triangle findById(Long id);
+    Triangle get(int index);
 
-    void update(Triangle triangle, Long id);
+    List<Triangle> getAll();
 
     boolean delete(Triangle triangle);
 

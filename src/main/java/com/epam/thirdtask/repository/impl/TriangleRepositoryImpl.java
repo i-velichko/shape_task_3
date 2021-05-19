@@ -37,25 +37,25 @@ public class TriangleRepositoryImpl implements TriangleRepository {
     }
 
     @Override
-    public Triangle findById(Long id) {
-        return null;
+    public Triangle get(int index) {
+        return triangleList.get(index);
     }
 
     @Override
-    public void update(Triangle triangle, Long id) {
-
+    public List<Triangle> getAll() {
+        return triangleList;
     }
 
     @Override
     public boolean delete(Triangle triangle) {
-        LOGGER.info("Triangle " + triangle + " was deleted from repository " + triangle);
+        LOGGER.info("Triangle " + triangle + " was deleted from repository ");
         return triangleList.remove(triangle);
     }
 
     @Override
     public List<Triangle> query(Specification specification) {
         return triangleList.stream()
-                .filter(triangle -> specification.specify(triangle))
+                .filter(specification::specify)
                 .collect(Collectors.toList());
     }
 

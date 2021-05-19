@@ -4,5 +4,5 @@ import com.epam.thirdtask.exception.TriangleException;
 
 public interface FacadeTriangle {
 
-    boolean createTrianglesList(String pathToFile) throws TriangleException;
+    void itIsAMagicWithProject(String pathToFile) throws TriangleException;
 }

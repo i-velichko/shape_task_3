@@ -22,7 +22,7 @@ public class DataFileReader {
         }
 
         try {
-            Stream<String> lineStream = Files.lines(Path.of(pathToFile)); //todo in 1 line
+            Stream<String> lineStream = Files.lines(Path.of(pathToFile));
             LOGGER.info("File " + pathToFile + "read successfully.");
             listOfDataForTriangle = lineStream.collect(Collectors.toList());
         } catch (IOException e) {

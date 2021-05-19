@@ -17,10 +17,11 @@ public class TriangleObserverImpl implements TriangleObserver {
         Triangle triangle = triangleEvent.getSource();
         TriangleCalculateServiceImpl calculateService = new TriangleCalculateServiceImpl();
         Warehouse warehouse = Warehouse.getInstance();
-        long triangleId = triangle.getTriangleId();
+        Long triangleId = triangle.getId();
         double area = calculateService.triangleAreaCalculate(triangle);
         double perimeter = calculateService.trianglePerimeterCalculate(triangle);
         warehouse.putParameters(triangleId, area, perimeter);
         LOGGER.info("Parameters in warehouse was update with " + triangle);
+
     }
 }
